@@ -1,0 +1,26 @@
+#Maintaining this MediaWiki version at this time as unsure if I wish to go to Semantic MediaWiki
+From mediawiki:1.35.3
+
+# Install composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
+# Download and extract Extensions for 1.35
+WORKDIR /var/www/html/extensions
+RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/Elastica-REL1_35-545651c.tar.gz
+RUN tar -xzf Elastica-REL1_35-545651c.tar.gz
+RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/CirrusSearch-REL1_35-95b958b.tar.gz
+RUN tar -xzf CirrusSearch-REL1_35-95b958b.tar.gz
+RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/AdvancedSearch-REL1_35-15159a9.tar.gz
+RUN tar -xzf AdvancedSearch-REL1_35-15159a9.tar.gz
+RUN rm Elastica-REL1_35-545651c.tar.gz CirrusSearch-REL1_35-95b958b.tar.gz AdvancedSearch-REL1_35-15159a9.tar.gz
+
+# Update and install prereqs for Mediawiki PDFHandler
+# https://www.mediawiki.org/wiki/Extension:PdfHandler
+RUN apt-get update && apt-get install -y ghostscript poppler-utils
+
+# Chameleon Installation Using Composer
+# https://github.com/ProfessionalWiki/chameleon/blob/master/docs/installation.md
+WORKDIR /var/www/html
+RUN composer update
+RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
+RUN composer update mediawiki/chameleon-skin --no-dev -o
