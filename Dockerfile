@@ -16,11 +16,13 @@ RUN rm Elastica-REL1_35-545651c.tar.gz CirrusSearch-REL1_35-95b958b.tar.gz Advan
 
 # Update and install prereqs for Mediawiki PDFHandler
 # https://www.mediawiki.org/wiki/Extension:PdfHandler
-RUN apt-get update && apt-get install -y ghostscript poppler-utils
+RUN apt-get update && apt-get install -y ghostscript poppler-utils unzip
 
 # Chameleon Installation Using Composer
 # https://github.com/ProfessionalWiki/chameleon/blob/master/docs/installation.md
 WORKDIR /var/www/html
 RUN composer update
-#RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
-#RUN composer update mediawiki/chameleon-skin --no-dev -o
+# Error with older packages, removing vendor folder to resolve.
+RUN rm -r vendor
+RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
+RUN composer update mediawiki/chameleon-skin --no-dev -o
