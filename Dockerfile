@@ -27,6 +27,8 @@ RUN rm -r vendor
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
 RUN composer update mediawiki/chameleon-skin --no-dev -o
 
-# Install Semantic MediaWiki
+# Install Semantic MediaWiki  
+# Installation instructions https://www.semantic-mediawiki.org/wiki/Help:Installation/Quick_guide
+# Modified to run following the above example for composer.
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-media-wiki
 RUN composer update --no-dev
