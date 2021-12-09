@@ -13,10 +13,10 @@ RUN tar -xzf CirrusSearch-REL1_35-95b958b.tar.gz
 RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/AdvancedSearch-REL1_35-15159a9.tar.gz
 RUN tar -xzf AdvancedSearch-REL1_35-15159a9.tar.gz
 RUN curl -LJO https://github.com/enterprisemediawiki/MasonryMainPage/archive/master.zip
-RUN unzip MasonryMainPage-master.zip
-RUN mv MasonryMainPage-master MasonryMainPage
+#RUN unzip MasonryMainPage-master.zip
+#RUN mv MasonryMainPage-master MasonryMainPage
 
-RUN rm Elastica-REL1_35-545651c.tar.gz CirrusSearch-REL1_35-95b958b.tar.gz AdvancedSearch-REL1_35-15159a9.tar.gz MasonryMainPage-master.zip
+RUN rm Elastica-REL1_35-545651c.tar.gz CirrusSearch-REL1_35-95b958b.tar.gz AdvancedSearch-REL1_35-15159a9.tar.gz
 
 # Update and install prereqs for Mediawiki PDFHandler
 # https://www.mediawiki.org/wiki/Extension:PdfHandler
