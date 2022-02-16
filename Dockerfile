@@ -6,4 +6,4 @@ COPY --from=composer:2.1.10 /usr/bin/composer /usr/local/bin/composer
 
 
 WORKDIR /var/www/html
-RUN composer update -no-plugins --no-scripts
+RUN composer update
