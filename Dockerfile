@@ -6,4 +6,4 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 
 WORKDIR /var/www/html
-RUN composer update 
+RUN composer update -no-plugins --no-scripts
