@@ -14,9 +14,4 @@ RUN apt-get update && apt-get install -y ghostscript poppler-utils unzip
 # Chameleon Installation Using Composer
 # https://github.com/ProfessionalWiki/chameleon/blob/master/docs/installation.md
 WORKDIR /var/www/html
-RUN composer update --no-dev
-
-# Error with older packages, removing vendor folder to resolve.
-RUN rm -r vendor
-RUN composer=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
-RUN composer update mediawiki/chameleon-skin --no-dev -o
+RUN composer update 
