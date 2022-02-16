@@ -12,11 +12,13 @@ RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/CirrusSearch-REL1_35-4
 RUN tar -xzf CirrusSearch-REL1_35-41d631e.tar.gz
 RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/AdvancedSearch-REL1_35-d344ce2.tar.gz
 RUN tar -xzf AdvancedSearch-REL1_35-d344ce2.tar.gz
+RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/HeaderTabs-REL1_35-f688fab.tar.gz
+RUN tar -xzf HeaderTabs-REL1_35-f688fab.tar.gz
 #RUN curl -LJO https://github.com/enterprisemediawiki/MasonryMainPage/archive/master.zip
 #RUN unzip MasonryMainPage-master.zip
 #RUN mv MasonryMainPage-master MasonryMainPage
 
-RUN rm Elastica-REL1_35-cffef9.tar.gz CirrusSearch-REL1_35-41d631e.tar.gz AdvancedSearch-REL1_35-d344ce2.tar.gz
+RUN rm Elastica-REL1_35-cffef9.tar.gz CirrusSearch-REL1_35-41d631e.tar.gz AdvancedSearch-REL1_35-d344ce2.tar.gz HeaderTabs-REL1_35-f688fab.tar.gz
 
 # Update and install prereqs for Mediawiki PDFHandler
 # https://www.mediawiki.org/wiki/Extension:PdfHandler
@@ -33,6 +35,12 @@ RUN composer update mediawiki/chameleon-skin --no-dev -o
 
 # Semantic Result Formats
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-result-formats:~4.0
+
+# Semantic Glossary
+RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-glossary:~4.0
+
+# Semantic Extra Special Properties
+RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-extra-special-properties:~3.0
 
 # Install Semantic MediaWiki  
 # Installation instructions https://www.semantic-mediawiki.org/wiki/Help:Installation/Quick_guide
