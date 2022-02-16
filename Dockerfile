@@ -35,12 +35,15 @@ RUN composer update mediawiki/chameleon-skin --no-dev -o
 
 # Semantic Result Formats
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-result-formats:~4.0
+RUN composer update mediawiki/semantic-result-formats --no-dev -o
 
 # Semantic Glossary
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-glossary:~4.0
+RUN composer update mediawiki/semantic-glossary --no-dev -o
 
 # Semantic Extra Special Properties
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-extra-special-properties:~3.0
+RUN composer update mediawiki/semantic-extra-special-properties --no-dev -o
 
 # Install Semantic MediaWiki  
 # Installation instructions https://www.semantic-mediawiki.org/wiki/Help:Installation/Quick_guide
