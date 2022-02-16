@@ -18,7 +18,7 @@ RUN tar -xzf HeaderTabs-REL1_35-f688fab.tar.gz
 #RUN unzip MasonryMainPage-master.zip
 #RUN mv MasonryMainPage-master MasonryMainPage
 
-RUN rm Elastica-REL1_35-cffef9.tar.gz CirrusSearch-REL1_35-41d631e.tar.gz AdvancedSearch-REL1_35-d344ce2.tar.gz HeaderTabs-REL1_35-f688fab.tar.gz
+RUN rm Elastica-REL1_35-cffef9d.tar.gz CirrusSearch-REL1_35-41d631e.tar.gz AdvancedSearch-REL1_35-d344ce2.tar.gz HeaderTabs-REL1_35-f688fab.tar.gz
 
 # Update and install prereqs for Mediawiki PDFHandler
 # https://www.mediawiki.org/wiki/Extension:PdfHandler
