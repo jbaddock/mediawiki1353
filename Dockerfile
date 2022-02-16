@@ -6,17 +6,17 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 # Download and extract Extensions for 1.35
 WORKDIR /var/www/html/extensions
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/Elastica-REL1_35-545651c.tar.gz
-RUN tar -xzf Elastica-REL1_35-545651c.tar.gz
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/CirrusSearch-REL1_35-95b958b.tar.gz
-RUN tar -xzf CirrusSearch-REL1_35-95b958b.tar.gz
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/AdvancedSearch-REL1_35-15159a9.tar.gz
-RUN tar -xzf AdvancedSearch-REL1_35-15159a9.tar.gz
-RUN curl -LJO https://github.com/enterprisemediawiki/MasonryMainPage/archive/master.zip
+RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/Elastica-REL1_35-cffef9d.tar.gz
+RUN tar -xzf Elastica-REL1_35-cffef9d.tar.gz
+RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/CirrusSearch-REL1_35-41d631e.tar.gz
+RUN tar -xzf CirrusSearch-REL1_35-41d631e.tar.gz
+RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/AdvancedSearch-REL1_35-d344ce2.tar.gz
+RUN tar -xzf AdvancedSearch-REL1_35-d344ce2.tar.gz
+#RUN curl -LJO https://github.com/enterprisemediawiki/MasonryMainPage/archive/master.zip
 #RUN unzip MasonryMainPage-master.zip
 #RUN mv MasonryMainPage-master MasonryMainPage
 
-RUN rm Elastica-REL1_35-545651c.tar.gz CirrusSearch-REL1_35-95b958b.tar.gz AdvancedSearch-REL1_35-15159a9.tar.gz
+RUN rm Elastica-REL1_35-cffef9.tar.gz CirrusSearch-REL1_35-41d631e.tar.gz AdvancedSearch-REL1_35-d344ce2.tar.gz
 
 # Update and install prereqs for Mediawiki PDFHandler
 # https://www.mediawiki.org/wiki/Extension:PdfHandler
