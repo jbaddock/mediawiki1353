@@ -18,5 +18,5 @@ RUN composer update --no-dev
 
 # Error with older packages, removing vendor folder to resolve.
 RUN rm -r vendor
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
+RUN composer=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
 RUN composer update mediawiki/chameleon-skin --no-dev -o
