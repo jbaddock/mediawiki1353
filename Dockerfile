@@ -23,9 +23,7 @@ RUN tar -xzf VoteNY-REL1_35-2394205.tar.gz
 #RUN curl -LJO https://github.com/enterprisemediawiki/MasonryMainPage/archive/master.zip
 #RUN unzip MasonryMainPage-master.zip
 #RUN mv MasonryMainPage-master MasonryMainPage
-#RUN curl -LJO https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/5.3.4.zip
-#RUN unzip mediawiki-extensions-PageForms-5.3.4.zip
-#RUN mv mediawiki-extensions-PageForms-5.3.4 PageForms
+
 
 RUN rm Elastica-REL1* CirrusSearch-REL1* AdvancedSearch-REL1*z HeaderTabs-REL1* PageForms-REL1* VoteNY-REL1*
 
