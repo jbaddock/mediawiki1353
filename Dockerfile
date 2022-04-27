@@ -9,12 +9,12 @@ COPY --from=composer:2.1.10 /usr/bin/composer /usr/local/bin/composer
 
 # Download and extract Extensions for MW 1.35
 WORKDIR /var/www/html/extensions
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/Elastica-REL1_35-cffef9d.tar.gz
-RUN tar -xzf Elastica-REL1_35-cffef9d.tar.gz
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/CirrusSearch-REL1_35-41d631e.tar.gz
-RUN tar -xzf CirrusSearch-REL1_35-41d631e.tar.gz
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/AdvancedSearch-REL1_35-d344ce2.tar.gz
-RUN tar -xzf AdvancedSearch-REL1_35-d344ce2.tar.gz
+RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/Elastica-REL1_35-91bafe6.tar.gz
+RUN tar -xzf Elastica-REL1_35-91bafe6.tar.gz
+RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/CirrusSearch-REL1_35-52cfb5f.tar.gz
+RUN tar -xzf CirrusSearch-REL1_35-52cfb5f.tar.gz
+RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/AdvancedSearch-REL1_35-4e8a9f3.tar.gz
+RUN tar -xzf AdvancedSearch-REL1_35-4e8a9f3.tar.gzv
 RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/HeaderTabs-REL1_35-f688fab.tar.gz
 RUN tar -xzf HeaderTabs-REL1_35-f688fab.tar.gz
 
