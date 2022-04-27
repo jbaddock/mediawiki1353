@@ -17,7 +17,7 @@ RUN tar -xzf HeaderTabs-REL1_35-f688fab.tar.gz
 
 
 RUN curl -LJO https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/5.4.zip
-RUN tar -xzf mediawiki-extensions-PageForms-5.4.zip
+RUN unzip mediawiki-extensions-PageForms-5.4.zip
 RUN mv mediawiki-extensions-PageForms-5.4 PageForms
 
 
@@ -30,7 +30,7 @@ RUN mv mediawiki-extensions-PageForms-5.4 PageForms
 #RUN mv MasonryMainPage-master MasonryMainPage
 
 
-RUN rm Elastica-REL1* CirrusSearch-REL1* AdvancedSearch-REL1*z HeaderTabs-REL1* PageForms-REL1* VoteNY-REL1* mediawiki-extensions-PageForms-5.4.zip
+RUN rm Elastica-REL1* CirrusSearch-REL1* AdvancedSearch-REL1*z HeaderTabs-REL1* VoteNY-REL1* mediawiki-extensions-PageForms-5.4.zip
 
 # Update and install prereqs for Mediawiki PDFHandler
 # https://www.mediawiki.org/wiki/Extension:PdfHandler
