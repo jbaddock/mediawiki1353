@@ -2,7 +2,7 @@
 From mediawiki:1.35.3
 
 # Install unzip
-RUN apt-get install unzip
+RUN apt-get update && apt-get install unzip
 
 # Install composer
 COPY --from=composer:2.1.10 /usr/bin/composer /usr/local/bin/composer
