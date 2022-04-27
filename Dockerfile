@@ -16,8 +16,14 @@ RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/HeaderTabs-REL1_35-f68
 RUN tar -xzf HeaderTabs-REL1_35-f688fab.tar.gz
 RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/PageForms-REL1_35-81f6ff9.tar.gz
 RUN tar -xzf PageForms-REL1_35-81f6ff9.tar.gz
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/VoteNY-REL1_35-2394205.tar.gz
-RUN tar -xzf VoteNY-REL1_35-2394205.tar.gz
+
+RUN curl -LJO https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/5.4.zip
+RUN tar -xzf mediawiki-extensions-PageForms-5.4.zip
+RUN mv mediawiki-extensions-PageForms-5.4 PageForms
+
+
+# RUN curl -LJO https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/5.4.zip
+# RUN tar -xzf mediawiki-extensions-PageForms-5.4.zip
 
 
 #RUN curl -LJO https://github.com/enterprisemediawiki/MasonryMainPage/archive/master.zip
@@ -25,7 +31,7 @@ RUN tar -xzf VoteNY-REL1_35-2394205.tar.gz
 #RUN mv MasonryMainPage-master MasonryMainPage
 
 
-RUN rm Elastica-REL1* CirrusSearch-REL1* AdvancedSearch-REL1*z HeaderTabs-REL1* PageForms-REL1* VoteNY-REL1*
+RUN rm Elastica-REL1* CirrusSearch-REL1* AdvancedSearch-REL1*z HeaderTabs-REL1* PageForms-REL1* VoteNY-REL1* mediawiki-extensions-PageForms-5.4.zip
 
 # Update and install prereqs for Mediawiki PDFHandler
 # https://www.mediawiki.org/wiki/Extension:PdfHandler
