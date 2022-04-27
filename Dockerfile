@@ -14,8 +14,7 @@ RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/AdvancedSearch-REL1_35
 RUN tar -xzf AdvancedSearch-REL1_35-d344ce2.tar.gz
 RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/HeaderTabs-REL1_35-f688fab.tar.gz
 RUN tar -xzf HeaderTabs-REL1_35-f688fab.tar.gz
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/PageForms-REL1_35-81f6ff9.tar.gz
-RUN tar -xzf PageForms-REL1_35-81f6ff9.tar.gz
+
 
 RUN curl -LJO https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/5.4.zip
 RUN tar -xzf mediawiki-extensions-PageForms-5.4.zip
