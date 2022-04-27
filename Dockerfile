@@ -15,6 +15,8 @@ RUN tar -xzf AdvancedSearch-REL1_35-d344ce2.tar.gz
 RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/HeaderTabs-REL1_35-f688fab.tar.gz
 RUN tar -xzf HeaderTabs-REL1_35-f688fab.tar.gz
 
+# Install unzip
+RUN yum install unzip
 
 RUN curl -LJO https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/5.4.zip
 RUN unzip mediawiki-extensions-PageForms-5.4.zip
