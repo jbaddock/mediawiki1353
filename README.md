@@ -12,4 +12,4 @@ Build of the MediaWiki docker image. See the file for the RUN details.
 - Semantic Extra Special Properties
 - HeaderTabs
 - Page Forms
-- Hit-counters
+- VoteNY
