@@ -122,7 +122,7 @@ RUN composer update
 # Modify LocalSettings.php "$WGJobRunRate = 0" to disable it from running based on the local trigger.
 WORKDIR /
 RUN MKDIR scripts
-COPY scripts/runJobs.sh /scripts/runJobs.sh
+COPY /scripts/runJobs.sh /scripts/runJobs.sh
 RUN chmod 0644 /scripts/runJobs.sh
 RUN crontab -l | { cat; echo "*/5 * * * * /scripts/runJobs.sh"; } | crontab -
 
