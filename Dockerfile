@@ -26,7 +26,7 @@ RUN set x; \
         curl
         wget
       && aptitude update \
-      && aptitude clean \
+      && aptitude clean
       
 # Install composer
 COPY --from=composer:2.1.10 /usr/bin/composer /usr/local/bin/composer
