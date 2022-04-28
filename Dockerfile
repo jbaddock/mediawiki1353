@@ -20,11 +20,11 @@ RUN set x; \
         && apt-get aptitude \
       && aptitude -y upgrade \
       && aptitude install -y \
-        git
-        rsync
-        unzip
-        curl
-        wget
+        git \
+        rsync \
+        unzip \
+        curl \
+        wget \
       && aptitude update \
       && aptitude clean
       
