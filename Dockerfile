@@ -17,7 +17,9 @@ ENV MW_VERSION=REL1_35 \
 #      WWW_GROUP=www-data \
 #      APACHE_LOG_DIR=/var/log/apache2
 
+##############################################################
 # System Setup
+##############################################################
 RUN set x; \
         apt-get clean \
         && apt-get update \
@@ -29,8 +31,10 @@ RUN set x; \
             unzip \
             curl \
             wget \
+	    cron \
         && aptitude update \
         && aptitude clean
+
 
 ##############################################################
 # Extensions
@@ -77,6 +81,7 @@ RUN set -x; \
     && aptitude update \
     && aptitude clean
 
+
 #######################################
 # Install composer
 #######################################
@@ -108,6 +113,18 @@ RUN composer update
 #RUN set -x; \
 #	cd $MW_HOME/extensions/SemanticResultFormats \
 #	&& patch < /tmp/semantic-result-formats.patch
+
+
+##############################################################
+# Scripts and Schedules
+##############################################################
+# Create cron schedule for every 5 minutes to execute runJobs.sh
+# Modify LocalSettings.php "$WGJobRunRate = 0" to disable it from running based on the local trigger.
+WORKDIR /
+RUN MKDIR scripts
+COPY /scripts/runJobs.sh /scripts/runJobs.sh
+RUN chmod 0644 /scripts/runJobs.sh
+RUN crontab -l | { cat; echo "*/5 * * * * /scripts/runJobs.sh"; } | crontab -
 
 
 #############################
