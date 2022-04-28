@@ -121,7 +121,7 @@ RUN composer update
 # Create cron schedule for every 5 minutes to execute runJobs.sh
 # Modify LocalSettings.php "$WGJobRunRate = 0" to disable it from running based on the local trigger.
 WORKDIR /
-RUN MKDIR scripts
+RUN mkdir scripts
 COPY /scripts/runJobs.sh /scripts/runJobs.sh
 RUN chmod 0644 /scripts/runJobs.sh
 RUN crontab -l | { cat; echo "*/5 * * * * /scripts/runJobs.sh"; } | crontab -
