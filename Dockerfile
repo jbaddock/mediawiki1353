@@ -18,7 +18,6 @@ ENV MW_VERSION=REL1_35 \
 RUN set x; \
         apt-get clean \
         && apt-get update \
-        && apt-get aptitude \
-      && aptitude -y upgrade \
+        && apt-get aptitude 
 
 
