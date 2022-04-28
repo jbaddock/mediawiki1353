@@ -1,6 +1,7 @@
 From mediawiki:1.35.6
 
-ENV MW_HOME=/var/www/html
+ENV MW_VERSION=REL1_35 \
+    MW_HOME=/var/www/html
 
 
 #ENV MW_VERSION=REL1_35 \
