@@ -70,7 +70,12 @@ RUN set -x; \
 
 # Update and install prereqs for Mediawiki PDFHandler
 # https://www.mediawiki.org/wiki/Extension:PdfHandler
-RUN apt-get update && apt-get install -y ghostscript poppler-utils unzip
+RUN set x; \
+	aptitude install -y \
+	  ghostscript \
+	  poppler-utils \
+      && aptitude update \
+      && aptitude clean
 
 WORKDIR /var/www/html
 
