@@ -22,7 +22,7 @@ RUN set x; \
         apt-get clean \
         && apt-get update \
         && apt-get install -y aptitude \
-        && aptitude -y upgrade \    
+        && aptitude -y upgrade \
         && aptitude install -y \
             git \
             rsync \
@@ -56,7 +56,7 @@ RUN set -x; \
  # PageForms (v. 5.3.4)
 	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms $MW_HOME/extensions/PageForms \
 	&& cd $MW_HOME/extensions/PageForms \
-	&& git checkout -q b9a4c1d8b8151611bc04bd7331d8b686e55e04af \ 
+	&& git checkout -q b9a4c1d8b8151611bc04bd7331d8b686e55e04af \
  # UserMerge
 	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/UserMerge $MW_HOME/extensions/UserMerge \
 	&& cd $MW_HOME/extensions/UserMerge \
