@@ -109,10 +109,15 @@ RUN set -x; \
 	&& patch < /tmp/semantic-result-formats.patch
 
 
+#############################
+# Cleanup
+#############################
 
 # Cleanup all .git leftovers
 RUN set -x; \
     cd $MW_HOME \
     && find . \( -name ".git" -o -name ".gitignore" -o -name ".gitmodules" -o -name ".gitattributes" \) -exec rm -rf -- {} +
-    
+
+# Preference is to start here when using exec into the docker container.  
+WORKDIR /var/www/html
     
