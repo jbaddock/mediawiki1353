@@ -1,35 +1,71 @@
-#Maintaining this MediaWiki version at this time as unsure if I wish to go to Semantic MediaWiki
-From mediawiki:1.35.3
+From mediawiki:1.35.6
 
-# Install unzip
-RUN apt-get update && apt-get install unzip
+ENV MW_HOME=/var/www/html
 
+
+#ENV MW_VERSION=REL1_35 \
+#    MW_CORE_VERSION=1.35.6 \
+#    WWW_ROOT=/var/www/mediawiki \
+#    MW_HOME=/var/www/mediawiki/w \
+#    MW_ORIGIN_FILES=/mw_origin_files \
+#    MW_VOLUME=/mediawiki \
+#    WWW_USER=www-data \
+#      WWW_GROUP=www-data \
+#      APACHE_LOG_DIR=/var/log/apache2
+
+# System Setup
+RUN set x; \
+        apt-get clean \
+        && apt-get update \
+        && apt-get aptitude \
+      && aptitude -y upgrade \
+      && aptitude install -y \
+        git
+        rsync
+        unzip
+        curl
+        wget
+      && aptitude update \
+      && aptitude clean \
+      
 # Install composer
 COPY --from=composer:2.1.10 /usr/bin/composer /usr/local/bin/composer
 
-# Download and extract Extensions for MW 1.35
-# When modifying this file, validate the extension download is still valid or if a new version was released.
 WORKDIR /var/www/html/extensions
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/Elastica-REL1_35-91bafe6.tar.gz
-RUN tar -xzf Elastica-REL1_35-91bafe6.tar.gz
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/CirrusSearch-REL1_35-52cfb5f.tar.gz
-RUN tar -xzf CirrusSearch-REL1_35-52cfb5f.tar.gz
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/AdvancedSearch-REL1_35-4e8a9f3.tar.gz
-RUN tar -xzf AdvancedSearch-REL1_35-4e8a9f3.tar.gzv
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/HeaderTabs-REL1_35-f688fab.tar.gz
-RUN tar -xzf HeaderTabs-REL1_35-f688fab.tar.gz
-RUN curl -LJO https://extdist.wmflabs.org/dist/extensions/UserMerge-REL1_35-184a438.tar.gz
-RUN tar -xzf UserMerge-REL1_35-184a438.tar.gz
 
+# Extensions
+RUN set -x; \
+	cd $MW_HOME/extensions \
+# AdvancedSearch
+	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/AdvancedSearch $MW_HOME/extensions/AdvancedSearch \
+	&& cd $MW_HOME/extensions/AdvancedSearch \
+	&& git checkout -q d1895707f3750a6d4a486b425ac9a727707f27f9 \
+# CirrusSearch
+	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/CirrusSearch $MW_HOME/extensions/CirrusSearch \
+	&& cd $MW_HOME/extensions/CirrusSearch \
+	&& git checkout -q 203237ef2828c46094c5f6ba26baaeff2ab3596b \
+# Elastica
+	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/Elastica $MW_HOME/extensions/Elastica \
+	&& cd $MW_HOME/extensions/Elastica \
+	&& git checkout -q 8af6b458adf628a98af4ba8e407f9c676bf4a4fb \
+ # HeaderTabs (v. 2.2)
+	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/HeaderTabs $MW_HOME/extensions/HeaderTabs \
+	&& cd $MW_HOME/extensions/HeaderTabs \
+	&& git checkout -q 37679158f93e4ba5a292744b30e2a64d50fb818c \
+ # PageForms (v. 5.3.4)
+	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms $MW_HOME/extensions/PageForms \
+	&& cd $MW_HOME/extensions/PageForms \
+	&& git checkout -q b9a4c1d8b8151611bc04bd7331d8b686e55e04af \ 
+ # UserMerge
+	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/UserMerge $MW_HOME/extensions/UserMerge \
+	&& cd $MW_HOME/extensions/UserMerge \
+	&& git checkout -q 1c161b2c12c3882b4230561d1834e7c5170d9200 \
+ # VoteNY
+	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/VoteNY $MW_HOME/extensions/VoteNY \
+	&& cd $MW_HOME/extensions/VoteNY \
+	&& git checkout -q b73dd009cf151a9f442361f6eb1e355817ca1e18 \
+  
 
-
-# Unzip section
-RUN curl -LJO https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/5.4.zip
-RUN unzip mediawiki-extensions-PageForms-5.4.zip
-RUN mv mediawiki-extensions-PageForms-5.4 PageForms
-
-
-RUN rm Elastica-REL1* CirrusSearch-REL1* AdvancedSearch-REL1*z HeaderTabs-REL1* VoteNY-REL1* mediawiki-extensions-PageForms-5.4.zip UserMerge-REL1*
 
 # Update and install prereqs for Mediawiki PDFHandler
 # https://www.mediawiki.org/wiki/Extension:PdfHandler
