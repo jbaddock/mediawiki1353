@@ -21,18 +21,23 @@ RUN set x; \
         && apt-get aptitude \
       && aptitude -y upgrade \
       && aptitude install -y \
-        git \
-        rsync \
-        unzip \
-        curl \
-        wget \
+
       && aptitude update \
       && aptitude clean
-      
-# Install composer
-COPY --from=composer:2.1.10 /usr/bin/composer /usr/local/bin/composer
 
-WORKDIR /var/www/html/extensions
+
+#        git \
+#        rsync \
+#        unzip \
+#        curl \
+#        wget \
+
+
+
+# Install composer
+# COPY --from=composer:2.1.10 /usr/bin/composer /usr/local/bin/composer
+
+# WORKDIR /var/www/html/extensions
 
 # Extensions
 RUN set -x; \
@@ -70,22 +75,22 @@ RUN set -x; \
 
 # Update and install prereqs for Mediawiki PDFHandler
 # https://www.mediawiki.org/wiki/Extension:PdfHandler
-RUN set x; \
-	aptitude install -y \
-	  ghostscript \
-	  poppler-utils \
-      && aptitude update \
-      && aptitude clean
+# RUN set x; \
+# 	aptitude install -y \
+# 	  ghostscript \
+# 	  poppler-utils \
+#       && aptitude update \
+#       && aptitude clean
 
-WORKDIR /var/www/html
+# WORKDIR /var/www/html
 
-RUN rm -r vendor
+# RUN rm -r vendor
 
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-media-wiki:~3.2.3
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~4.0
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-result-formats:~4.0
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/lingo:~3.0
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-glossary:~4.0
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-extra-special-properties:~3.0
+# RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-media-wiki:~3.2.3
+# RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~4.0
+# RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-result-formats:~4.0
+# RUN COMPOSER=composer.local.json composer require --no-update mediawiki/lingo:~3.0
+# RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-glossary:~4.0
+# RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-extra-special-properties:~3.0
 
-RUN composer update
+# RUN composer update
