@@ -31,8 +31,10 @@ RUN set x; \
             wget \
         && aptitude update \
         && aptitude clean
-   
+
+##############################################################
 # Extensions
+##############################################################
 RUN set -x; \
 	cd $MW_HOME/extensions \
 # AdvancedSearch
@@ -75,7 +77,9 @@ RUN set -x; \
     && aptitude update \
     && aptitude clean
 
+#######################################
 # Install composer
+#######################################
  COPY --from=composer:2.1.10 /usr/bin/composer /usr/local/bin/composer
 
 # Configure Composer
@@ -93,21 +97,16 @@ RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic
 RUN composer update
 
 
+#############################
 # Patches
-# Have not attempted any of these yet.  
-# Review https://github.com/CanastaWiki/Canasta/blob/master/Dockerfile and how they manage it.
+# Review some patches https://github.com/CanastaWiki/Canasta/blob/master/Dockerfile and how they manage it.
+#############################
 
 # SemanticResultFormats, see https://github.com/WikiTeq/SemanticResultFormats/compare/master...WikiTeq:fix1_35
 COPY _sources/patches/semantic-result-formats.patch /tmp/semantic-result-formats.patch
 RUN set -x; \
 	cd $MW_HOME/extensions/SemanticResultFormats \
 	&& patch < /tmp/semantic-result-formats.patch
-
-# SWM maintenance page returns 503 (Service Unavailable) status code, PR: https://github.com/SemanticMediaWiki/SemanticMediaWiki/pull/4967
-COPY _sources/patches/smw-maintenance-503.patch /tmp/smw-maintenance-503.patch
-RUN set -x; \
-	cd $MW_HOME/extensions/SemanticMediaWiki \
-	&& patch -u -b src/SetupCheck.php -i /tmp/smw-maintenance-503.patch
 
 
 
