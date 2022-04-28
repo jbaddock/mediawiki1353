@@ -100,13 +100,14 @@ RUN composer update
 #############################
 # Patches
 # Review some patches https://github.com/CanastaWiki/Canasta/blob/master/Dockerfile and how they manage it.
+# Patches currently not working, will have to review this later 
 #############################
 
 # SemanticResultFormats, see https://github.com/WikiTeq/SemanticResultFormats/compare/master...WikiTeq:fix1_35
-COPY _sources/patches/semantic-result-formats.patch /tmp/semantic-result-formats.patch
-RUN set -x; \
-	cd $MW_HOME/extensions/SemanticResultFormats \
-	&& patch < /tmp/semantic-result-formats.patch
+#COPY _sources/patches/semantic-result-formats.patch /tmp/semantic-result-formats.patch
+#RUN set -x; \
+#	cd $MW_HOME/extensions/SemanticResultFormats \
+#	&& patch < /tmp/semantic-result-formats.patch
 
 
 #############################
