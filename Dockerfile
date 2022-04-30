@@ -52,7 +52,8 @@ RUN set -x; \
 # Elastica
 	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/Elastica $MW_HOME/extensions/Elastica \
 	&& cd $MW_HOME/extensions/Elastica \
-	&& git checkout -q 91bafe6b11edf763c606bf332a0b8bcc7693b1b5 \
+	&& git checkout -q 8af6b458adf628a98af4ba8e407f9c676bf4a4fb \
+	#&& git checkout -q 91bafe6b11edf763c606bf332a0b8bcc7693b1b5 \ Failed on container startup.
  # HeaderTabs (v. 2.2)
 	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/HeaderTabs $MW_HOME/extensions/HeaderTabs \
 	&& cd $MW_HOME/extensions/HeaderTabs \
