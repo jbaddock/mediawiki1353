@@ -44,31 +44,31 @@ RUN set -x; \
 # AdvancedSearch
 	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/AdvancedSearch $MW_HOME/extensions/AdvancedSearch \
 	&& cd $MW_HOME/extensions/AdvancedSearch \
-	&& git checkout -q d1895707f3750a6d4a486b425ac9a727707f27f9 \
+	&& git checkout -q 4e8a9f3710c821eb25a08e3d768bd2523bfb0e3b \
 # CirrusSearch
 	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/CirrusSearch $MW_HOME/extensions/CirrusSearch \
 	&& cd $MW_HOME/extensions/CirrusSearch \
-	&& git checkout -q 203237ef2828c46094c5f6ba26baaeff2ab3596b \
+	&& git checkout -q dfeff687cc100b2eb10dff411b344b38972131ef \
 # Elastica
 	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/Elastica $MW_HOME/extensions/Elastica \
 	&& cd $MW_HOME/extensions/Elastica \
-	&& git checkout -q 8af6b458adf628a98af4ba8e407f9c676bf4a4fb \
+	&& git checkout -q 91bafe6b11edf763c606bf332a0b8bcc7693b1b5 \
  # HeaderTabs (v. 2.2)
 	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/HeaderTabs $MW_HOME/extensions/HeaderTabs \
 	&& cd $MW_HOME/extensions/HeaderTabs \
-	&& git checkout -q 37679158f93e4ba5a292744b30e2a64d50fb818c \
+	&& git checkout -q 38647067478a59dabf02e5cacbc7488d7812b388 \
  # PageForms (v. 5.3.4)
 	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms $MW_HOME/extensions/PageForms \
 	&& cd $MW_HOME/extensions/PageForms \
-	&& git checkout -q b9a4c1d8b8151611bc04bd7331d8b686e55e04af \
+	&& git checkout -q dd09bde68d830f1232b7e92e42ada598f42b5d60 \
  # UserMerge
 	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/UserMerge $MW_HOME/extensions/UserMerge \
 	&& cd $MW_HOME/extensions/UserMerge \
-	&& git checkout -q 1c161b2c12c3882b4230561d1834e7c5170d9200 \
+	&& git checkout -q 184a4380eafef0fb9d21cac956b69a4b35fc6a5f \
  # VoteNY
 	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/VoteNY $MW_HOME/extensions/VoteNY \
 	&& cd $MW_HOME/extensions/VoteNY \
-	&& git checkout -q b73dd009cf151a9f442361f6eb1e355817ca1e18 \
+	&& git checkout -q 2394205bc88eb62b66080026e911d9984617b7ba \
 
 
 
