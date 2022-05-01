@@ -55,11 +55,11 @@ RUN set -x; \
 	&& cd $MW_HOME/extensions/Elastica \
 	&& git checkout -q 91bafe6b11edf763c606bf332a0b8bcc7693b1b5 \
  # HeaderTabs (v. 2.2)
-	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/HeaderTabs $MW_HOME/extensions/HeaderTabs \
+	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/HeaderTabs $MW_HOME/extensions/HeaderTabs \
 	&& cd $MW_HOME/extensions/HeaderTabs \
 	&& git checkout -q 38647067478a59dabf02e5cacbc7488d7812b388 \
  # PageForms (v. 5.3.4)
-	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms $MW_HOME/extensions/PageForms \
+	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms $MW_HOME/extensions/PageForms \
 	&& cd $MW_HOME/extensions/PageForms \
 	&& git checkout -q dd09bde68d830f1232b7e92e42ada598f42b5d60 \
  # UserMerge
