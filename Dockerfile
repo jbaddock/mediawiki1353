@@ -32,6 +32,7 @@ RUN set x; \
             curl \
             wget \
 	    cron \
+	    nano \
         && aptitude update \
         && aptitude clean
 
@@ -52,8 +53,7 @@ RUN set -x; \
 # Elastica
 	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/Elastica $MW_HOME/extensions/Elastica \
 	&& cd $MW_HOME/extensions/Elastica \
-	&& git checkout -q 8af6b458adf628a98af4ba8e407f9c676bf4a4fb \
-	#&& git checkout -q 91bafe6b11edf763c606bf332a0b8bcc7693b1b5 \ Failed on container startup.
+	&& git checkout -q 91bafe6b11edf763c606bf332a0b8bcc7693b1b5 \
  # HeaderTabs (v. 2.2)
 	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/HeaderTabs $MW_HOME/extensions/HeaderTabs \
 	&& cd $MW_HOME/extensions/HeaderTabs \
@@ -93,12 +93,12 @@ RUN set -x; \
  WORKDIR /var/www/html
  RUN rm -r vendor
 
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-media-wiki:~4.0.0
+RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-media-wiki:4.0.0
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~4.0
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-result-formats:~4.0
+#RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-result-formats:~4.0
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/lingo:~3.0
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-glossary:~4.0
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-extra-special-properties:~3.0
+#RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-glossary:~4.0
+#RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-extra-special-properties:~3.0
 
 RUN composer update
 
