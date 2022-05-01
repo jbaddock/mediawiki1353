@@ -46,14 +46,14 @@ RUN set -x; \
 	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/AdvancedSearch $MW_HOME/extensions/AdvancedSearch \
 	&& cd $MW_HOME/extensions/AdvancedSearch \
 	&& git checkout -q 4e8a9f3710c821eb25a08e3d768bd2523bfb0e3b \
+# CirrusSearch
+	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/CirrusSearch $MW_HOME/extensions/CirrusSearch \
+	&& cd $MW_HOME/extensions/CirrusSearch \
+	&& git checkout -q 52cfb5f809d3ff920785b199fc56c8671f2289fe \
 # Elastica
 	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/Elastica $MW_HOME/extensions/Elastica \
 	&& cd $MW_HOME/extensions/Elastica \
 	&& git checkout -q 91bafe6b11edf763c606bf332a0b8bcc7693b1b5 \
-# CirrusSearch
-	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/CirrusSearch $MW_HOME/extensions/CirrusSearch \
-	&& cd $MW_HOME/extensions/CirrusSearch \
-	&& git checkout -q dfeff687cc100b2eb10dff411b344b38972131ef \
  # HeaderTabs (v. 2.2)
 	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/HeaderTabs $MW_HOME/extensions/HeaderTabs \
 	&& cd $MW_HOME/extensions/HeaderTabs \
