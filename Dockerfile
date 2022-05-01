@@ -92,6 +92,8 @@ RUN set -x; \
 # Issue with composer, so removing the vendor to prevent issues
  WORKDIR /var/www/html
  RUN rm -r vendor
+RUN composer update --no-dev
+RUN composer update --no-dev
 
 # Anchored SMW to 4.0.1 JRB - 2022-05-01
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-media-wiki:4.0.1
@@ -101,7 +103,8 @@ RUN COMPOSER=composer.local.json composer require --no-update mediawiki/lingo:~3
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-glossary:dev-master
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-extra-special-properties:~3.0
 
-RUN composer update
+RUN composer update --no-dev
+RUN composer update --no-dev
 
 
 #############################
