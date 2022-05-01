@@ -93,12 +93,13 @@ RUN set -x; \
  WORKDIR /var/www/html
  RUN rm -r vendor
 
+# Anchored SMW to 4.0.1 JRB - 2022-05-01
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-media-wiki:4.0.1
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~4.0
-#RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-result-formats:~4.0
+RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-result-formats:~4.0
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/lingo:~3.0
-#RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-glossary:~4.0
-#RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-extra-special-properties:~3.0
+RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-glossary:~4.0
+RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-extra-special-properties:~3.0
 
 RUN composer update
 
