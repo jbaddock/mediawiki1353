@@ -98,7 +98,7 @@ RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~4.0
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-result-formats:~4.0
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/lingo:~3.0
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-glossary:~4.0
+RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-glossary:dev-master
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-extra-special-properties:~3.0
 
 RUN composer update
