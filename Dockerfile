@@ -93,7 +93,7 @@ RUN set -x; \
  WORKDIR /var/www/html
  RUN rm -r vendor
 
-RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-media-wiki:~3.2.3
+RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-media-wiki:~4.0
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~4.0
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-result-formats:~4.0
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/lingo:~3.0
