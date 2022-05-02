@@ -66,7 +66,7 @@ RUN set -x; \
 	&& cd $MW_HOME/extensions/Elastica \
 	&& git checkout -q 91bafe6b11edf763c606bf332a0b8bcc7693b1b5 \
       # Elastica git Extension is not setting up properly, requiring composer to run directly in the extension folder
-  	&& composer update --no-dev 
+  	&& composer update --no-dev \
  # HeaderTabs (v. 2.2)
 	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/HeaderTabs $MW_HOME/extensions/HeaderTabs \
 	&& cd $MW_HOME/extensions/HeaderTabs \
