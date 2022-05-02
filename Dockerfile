@@ -54,6 +54,8 @@ RUN set -x; \
 	&& git clone --single-branch -b $MW_VERSION https://gerrit.wikimedia.org/r/mediawiki/extensions/Elastica $MW_HOME/extensions/Elastica \
 	&& cd $MW_HOME/extensions/Elastica \
 	&& git checkout -q 91bafe6b11edf763c606bf332a0b8bcc7693b1b5 \
+	# Extension is not setting up properly, requiring composer to run directly in the extension folder
+	&& composer update --no-dev \
  # HeaderTabs (v. 2.2)
 	&& git clone --single-branch -b master https://gerrit.wikimedia.org/r/mediawiki/extensions/HeaderTabs $MW_HOME/extensions/HeaderTabs \
 	&& cd $MW_HOME/extensions/HeaderTabs \
@@ -93,7 +95,7 @@ RUN set -x; \
  WORKDIR /var/www/html
  RUN rm -r vendor
 RUN composer update --no-dev
-RUN composer update --no-dev
+
 
 # Anchored SMW to 4.0.1 JRB - 2022-05-01
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-media-wiki:4.0.1
@@ -104,8 +106,6 @@ RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic
 RUN COMPOSER=composer.local.json composer require --no-update mediawiki/semantic-extra-special-properties:~3.0
 
 RUN composer update --no-dev
-RUN composer update --no-dev
-
 
 #############################
 # Patches
